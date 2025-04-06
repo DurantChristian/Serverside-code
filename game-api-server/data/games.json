@@ -1,0 +1,98 @@
+[
+    {
+        "_id": 1,
+        "title": "The Witcher 3",
+        "img_name": "witcher3.png",
+        "features": ["Open world", "Story-driven", "RPG mechanics"],
+        "genre": "RPG",
+        "rating": 9.5,
+        "about": "An epic fantasy role-playing game with a rich storyline and immersive gameplay",
+        "release_year": 2015,
+        "reference": "https://th.bing.com/th/id/OIP.V5P6rt3DNfJQqfjzX4sBAQHaEK?rs=1&pid=ImgDetMain",
+        "external_link": "/gamereview"
+      },
+      {
+        "_id": 2,
+        "title": "Call of Duty",
+        "img_name": "callofduty.png",
+        "features": ["Multiplayer", "Fast-paced", "FPS"],
+        "genre": "Shooter",
+        "rating": 8.7,
+        "about": "A fast-paced first-person shooter that offers thrilling multiplayer experiences",
+        "release_year": 2023,
+        "reference": "https://th.bing.com/th/id/R.747e51180cc60f4c301d3d3e3701336c?rik=U5cP9131wQd2cA&pid=ImgRaw&r=0",
+        "external_link": "/c"
+      },
+      {
+        "_id": 3,
+        "title": "Portal 2",
+        "img_name": "portal2.png",
+        "features": ["Puzzle", "Co-op mode", "Sci-fi setting"],
+        "genre": "Puzzle",
+        "rating": 9.3,
+        "about": "A mind-bending puzzle game that challenges your problem-solving abilities with humor",
+        "release_year": 2011,
+        "reference": "https://switchgamesfree.com/wp-content/uploads/2022/08/portal1-copy.jpg",
+        "external_link": "/c"
+      },
+      {
+        "_id": 4,
+        "title": "Fortnite",
+        "img_name": "fortnitecover.png",
+        "features": ["Battle royale", "Building mechanics", "Multiplayer"],
+        "genre": "Shooter",
+        "rating": 8.5,
+        "about": "A action pack first-person shooter that offers a variety of multiplayer experiences",
+        "release_year": 2017,
+        "reference": "https://1.bp.blogspot.com/-Wtq2A3QQZpY/XzYqrhsUh_I/AAAAAAAAA8o/iGNgwuw_G0I7-SuHSaFSgSM1gy7b-DHZQCLcBGAsYHQ/s1600/egyptforgames%2B1.jpg",
+        "external_link": "/c"
+      },
+      {
+        "_id": 5,
+        "title": "Minecraft",
+        "img_name": "minecraft.png",
+        "features": ["Sandbox gameplay", "Creative mode", "Survival mode"],
+        "genre": "Sandbox",
+        "rating": 9.7,
+        "about": "A creative game where you can build your own world and have fun with friends",
+        "release_year": 2011,
+        "reference": "https://cdn.eteknix.com/wp-content/uploads/2017/07/featured-15.jpg",
+        "external_link": "/c"
+      },
+      {
+        "_id": 6,
+        "title": "Sims 4",
+        "img_name": "sims.png",
+        "features": ["Life simulation", "Customization", "Open-world"],
+        "genre": "Simulation",
+        "rating": 7.9,
+        "about": "A open world futuristic game",
+        "release_year": 2014,
+        "reference": "https://th.bing.com/th/id/OIP.OTfX_Ps333yQWE_mIBqeiQHaHa?w=202&h=202&c=7&r=0&o=5&dpr=2&pid=1.7",
+        "external_link": "/c"
+      },
+      {
+        "_id": 7,
+        "title": "Elden Ring",
+        "img_name": "eldenring.png",
+        "features": ["Open world", "Challenging combat", "Fantasy setting"],
+        "genre": "RPG",
+        "rating": 9.8,
+        "about": "A dark and mysterious world filled of adventures game",
+        "release_year": 2022,
+        "reference": "https://th.bing.com/th/id/OIP.yJirbyWKnLNEVvWDciCxPQAAAA?w=155&h=220&c=7&r=0&o=5&dpr=2&pid=1.7",
+        "external_link": "/c"
+      },
+      {
+        "_id": 8,
+        "title": "Casino",
+        "img_name": "gamble.png",
+        "features": ["Gambling mechanics", "High stakes", "Chance-based gameplay"],
+        "genre": "Casino",
+        "rating": 6.5,
+        "about": "A thrilling and risky gambling game",
+        "release_year": 2020,
+        "reference": "https://th.bing.com/th/id/OIP.XuuZ9U8X2G2ENh2t1380GwHaEK?w=318&h=180&c=7&r=0&o=5&dpr=2&pid=1.7",
+        "external_link": "/c"
+      }
+    ]
