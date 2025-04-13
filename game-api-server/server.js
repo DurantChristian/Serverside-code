@@ -99,6 +99,7 @@ const validateGame = (game) => {
     genre: Joi.string().required(),
     rating: Joi.string().required(),
     release_year: Joi.number().required(),
+    external_link: Joi.string().required(),
   });
 
   return schema.validate(game);
