@@ -48,6 +48,7 @@ app.post("/api/games", upload.single("img"), (req, res) => {
     _id: games.length + 1,
     title: req.body.title,
     genre: req.body.genre,
+    about: req.body.about,
     rating: req.body.rating,
     release_year: req.body.release_year,
     external_link: req.body.external_link,
@@ -72,6 +73,7 @@ app.put("/api/games/:id", upload.single("img"), (req, res) => {
 
   game.title = req.body.title;
   game.genre = req.body.genre;
+  game.about = req.body.about;
   game.rating = req.body.rating;
   game.release_year = req.body.release_year;
   game.external_link = req.body.external_link;
@@ -97,6 +99,7 @@ const validateGame = (game) => {
     _id: Joi.allow(""),
     title: Joi.string().min(3).required(),
     genre: Joi.string().required(),
+    about: Joi.string().required(),
     rating: Joi.string().required(),
     release_year: Joi.number().required(),
     external_link: Joi.string().required(),
