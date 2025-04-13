@@ -56,7 +56,7 @@ app.post("/api/games", upload.single("img"), (req, res) => {
   };
 
   if (req.file) {
-    game.img_name = "images/" + req.file.filename;
+    game.img_name = req.file.filename;
   }
 
   games.push(game);
@@ -80,7 +80,7 @@ app.put("/api/games/:id", upload.single("img"), (req, res) => {
   game.external_link = req.body.external_link;
 
   if (req.file) {
-    game.img_name = "images/" + req.file.filename;
+    game.img_name = req.file.filename;
   }
 
   res.send(game);
