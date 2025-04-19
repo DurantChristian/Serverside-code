@@ -4,6 +4,7 @@ const app = express();
 const path = require("path");
 const Joi = require("joi");
 const multer = require("multer");
+const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 
 app.use(express.static("public"));
@@ -22,77 +23,97 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
+mongoose
+  .connect("mongodb+srv://cdd7:xu9Q35gxCNM5sb5i@cluster0.31l9vfp.mongodb.net/")
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((error) => {
+    console.log("Couldn't connect to MongoDB", error);
+  });
+
+const gameSchema = new mongoose.Schema({
+  title: String,
+  genre: String,
+  about: String,
+  rating: String,
+  release_year: Number,
+  external_link: String,
+  img_name: String,
+});
+
+const Game = mongoose.model("Game", gameSchema);
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
-let games = require("./data/games.json");
+//let games = require("./data/games.json");
 
-app.get("/api/games", (req, res) => {
+app.get("/api/games", async (req, res) => {
+  const games = await Game.find();
   res.send(games);
 });
 
-app.get("/api/games/:id", (req, res) => {
-  const game = games.find((g) => g._id === parseInt(req.params.id));
+app.get("/api/games/:id", async (req, res) => {
+  const game = await Game.findById(req.params.id);
   if (!game) return res.status(404).send("Game not found.");
   res.send(game);
 });
 
-app.post("/api/games", upload.single("img"), (req, res) => {
+app.post("/api/games", upload.single("img"), async (req, res) => {
   const result = validateGame(req.body);
 
   if (result.error) {
     return res.status(400).send(result.error.details[0].message);
   }
 
-  const game = {
-    _id: games.length + 1,
+  const game = new Game ({
     title: req.body.title,
     genre: req.body.genre,
     about: req.body.about,
     rating: req.body.rating,
     release_year: req.body.release_year,
     external_link: req.body.external_link,
-  };
+  });
 
   if (req.file) {
     game.img_name = req.file.filename;
   }
 
-  games.push(game);
-  res.status(200).send(game);
+  const newGame = await game.save();
+  res.send(newGame);
 });
 
-app.put("/api/games/:id", upload.single("img"), (req, res) => {
-  let game = games.find((g) => g._id === parseInt(req.params.id));
-  if (!game) return res.status(404).send("Game with given ID was not found.");
-
+app.put("/api/games/:id", upload.single("img"), async (req, res) => {
   const result = validateGame(req.body);
+  
   if (result.error) {
     return res.status(400).send(result.error.details[0].message);
   }
 
-  game.title = req.body.title;
-  game.genre = req.body.genre;
-  game.about = req.body.about;
-  game.rating = req.body.rating;
-  game.release_year = req.body.release_year;
-  game.external_link = req.body.external_link;
+let fieldsToUpdate = {
+  title: req.body.title,
+  genre: req.body.genre,
+  about: req.body.about,
+  rating: req.body.rating,
+  release_year: req.body.release_year,
+  external_link: req.body.external_link,
+};
 
   if (req.file) {
-    game.img_name = req.file.filename;
+    fieldsToUpdate.img_name = req.file.filename;
   }
 
-  res.send(game);
+  await Game.updateOne({ _id: req.params.id }, filedsToUpdate);
+  const updatedGame = await Game.findById(req.params.id);
+  res.send(updatedGame);
 });
 
-app.delete("/api/games/:id", (req, res) => {
-  const game = games.find((g) => g._id === parseInt(req.params.id));
-  if (!game) return res.status(404).send("The game with the given ID was not found.");
-
-  const index = games.indexOf(game);
-  games.splice(index, 1);
-  res.send(game);
+app.delete("/api/games/:id", async (req, res) => {
+  const deletedGame = await Game.findByIdAndDelete(req.params.id);
+  if (!deletedGame) return res.status(404).send("The game with the given ID was not found.");
+  res.send(deletedGame);
 });
 
 const validateGame = (game) => {
