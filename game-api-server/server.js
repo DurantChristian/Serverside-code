@@ -48,7 +48,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
-//let games = require("./data/games.json");
+let games = require("./data/games.json");
 
 app.get("/api/games", async (req, res) => {
   const games = await Game.find();
