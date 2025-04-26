@@ -140,7 +140,7 @@ const validateGame = (game) => {
     title: Joi.string().min(3).required(),
     genre: Joi.string().required(),
     about: Joi.string().required(),
-    rating: Joi.string().required(),
+    rating: Joi.number().required(),
     release_year: Joi.number().required(),
     external_link: Joi.string().required(),
   });
