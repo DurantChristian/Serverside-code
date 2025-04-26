@@ -119,12 +119,12 @@ app.put("/api/games/:id", upload.single("img"), async (req, res) => {
       return res.status(404).send("Game not found.");
     }
 
-    console.log("Updated Game:", updatedGame);
-    res.send(updatedGame);
-  } catch (error) {
-    console.error("Server Error on PUT /api/games/:id", error);
-    res.status(500).send("Internal Server Error");
-  }
+      console.log("Updated Game:", updatedGame);
+      res.send(updatedGame);
+    } catch (error) {
+      console.error("Server Error on PUT /api/games/:id", error);
+      res.status(500).send("Internal Server Error");
+    }
 });
 
 app.delete("/api/games/:id", async (req, res) => {
